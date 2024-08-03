@@ -1,0 +1,13 @@
+*{
+    padding: 0;
+    margin: 0;
+    color: white;
+    border-radius: 0.5rem;
+}
+
+body{
+    background-image: url('https://img.freepik.com/vector-gratis/fondo-monocromatico-blanco-estilo-papel_52683-66443.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1722643200&semt=sph');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+}

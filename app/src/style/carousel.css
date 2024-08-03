@@ -1,0 +1,55 @@
+/* Estilos generales para el carrusel */
+.carousel {
+  position: relative;
+  width: 100%;
+  margin: auto;
+}
+
+.carousel-inner {
+  display: flex;
+  overflow: hidden;
+}
+
+.carousel-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-card-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.carousel-card {
+  flex: 1;
+  max-width: 300px; /* Ajusta el tamaño de las tarjetas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.carousel-card:hover {
+  transform: scale(1.05);
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.25rem;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo para los íconos */
+  border-radius: 50%;
+  padding: 0.5rem;
+}

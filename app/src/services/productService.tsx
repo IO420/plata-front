@@ -1,28 +1,16 @@
-// src/services/productService.ts
+'use client'
+import { useEffect, useState } from "react";
 
-interface Kind {
-  id_kind: number;
-  name: string;
+export const useFetch = (url: string, method: string) => {
+  const [data, setProducts] = useState([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000${url}`, { method })
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => setError(error));
+  }, [url, method]);
+
+  return { data, error };
 }
-
-export interface Product {
-  id_product: number;
-  name: string;
-  description: string;
-  price: number;
-  kinds: Kind[];
-}
-
-export const fetchProducts = async (): Promise<Product[]> => {
-  try {
-    const response = await fetch('http://192.168.100.7:3000/product');
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    return data;
-  } catch (error: any) {
-    console.error('Fetch error:', error.message);
-    throw error;
-  }
-};

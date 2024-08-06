@@ -1,7 +1,6 @@
 *{
     padding: 0;
     margin: 0;
-    color: white;
     border-radius: 0.5rem;
 }
 
@@ -14,7 +13,37 @@ body{
 
 .flex{
     display: flex;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;
+}
 
+.classic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(128, 128, 128, 0.555);
+    max-width: 800px;
+    width: 90%;
+    padding: 10px;
+}
+
+.form [type='text']{
+    width: 90%;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    max-width: 15vw;
+    margin: 5px 0px;
+    
 }

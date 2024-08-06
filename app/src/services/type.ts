@@ -10,3 +10,7 @@ export interface Product {
   price: number;
   kinds: Kind[];
 }
+
+export interface ProductProps{
+  product:Product
+}

@@ -1,12 +1,8 @@
 import React from "react";
 import "../../style/card.css";
-import { Product } from "../../services/type";
+import { ProductProps } from "../../services/type";
 
-interface productProps{
-  product:Product
-}
-
-export default function Card({product}:productProps) {
+export default function Card({product}:ProductProps) {
   return (
     <div className="card">
       <div className="cardHeader">

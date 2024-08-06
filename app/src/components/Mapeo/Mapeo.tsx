@@ -7,8 +7,7 @@ import Card from "../Card/Card";
 
 export default function Mapeo() {
   const url = "/product";
-  const method = "GET";
-  const { data, error } = useFetch(url, method);
+  const { data, error } = useFetch(url);
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {

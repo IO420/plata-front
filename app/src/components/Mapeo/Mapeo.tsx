@@ -33,11 +33,8 @@ export default function Mapeo() {
     <div className="flex">
       {products.map((product) => (
         <Card
-          id_product={product.id_product}
-          name={product.name}
-          description={product.description}
-          price={product.price}
-          kinds={product.kinds}
+        product={product}
+        key={product.id_product}
         />
       ))}
     </div>

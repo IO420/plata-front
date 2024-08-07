@@ -1,14 +1,18 @@
-import React from 'react';
-import Mapeo from './src/components/Mapeo/Mapeo'
+import React from "react";
+import Mapeo from "./src/components/Mapeo/Mapeo";
 import Header from "./src/components/Header/Header";
+import Slider from "./src/components/Slider/Slider";
+import Footer from "./src/components/Footer/Footer";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <div>
-        <Mapeo/>
-      </div>
+      <main>
+        <Slider />
+        <Mapeo />
+      </main>
+      <Footer/>
     </>
   );
 }

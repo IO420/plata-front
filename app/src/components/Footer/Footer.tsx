@@ -1,6 +1,6 @@
+import "../../style/header.css";
+import "../../style/footer.css";
 
 export default function Footer() {
-  return (
-    <div>Footer</div>
-  )
+  return <footer>golas</footer>;
 }

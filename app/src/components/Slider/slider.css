@@ -1,0 +1,17 @@
+.slider{
+    margin: 20px;
+    display: flex;
+    width: 90vw;
+    max-height: 60vh;
+    position: relative;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.slider img{
+    min-width: 90vw;
+    left: 0;
+    object-fit: cover;
+    position: sticky;
+    scroll-snap-align: start;
+}

@@ -6,28 +6,9 @@ export default function Header() {
   return (
     <header>
       <nav className='navbar'>
-        <div className='container'>
-          <Link href="/" className='logo'>
-            MyApp
-          </Link>
-          <ul className='navLinks'>
-            <li>
-              <Link href="/" className='navLink'>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className='navLink'>
-                About
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className='navLink'>
-                Contact
-              </Link>
-            </li>
+          <ul>
+            <li>1_0</li>
           </ul>
-        </div>
       </nav>
     </header>
   );

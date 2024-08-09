@@ -1,5 +1,6 @@
 header{
     background-color:rgba(22, 22, 23, .8);
+    backdrop-filter: saturate(180%) blur(20px);
     display: flex;
     justify-content: center;
     position: sticky;

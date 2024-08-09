@@ -8,6 +8,7 @@ export default function Header() {
       <nav className='navbar'>
           <ul>
             <li>1_0</li>
+            <li></li>
           </ul>
       </nav>
     </header>

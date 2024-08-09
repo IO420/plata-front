@@ -29,13 +29,13 @@ export default function Mapeo() {
   }
 
   return (
-    <div className="flex">
-      {products.map((product) => (
-        <Card
-        product={product}
-        key={product.id_product}
-        />
-      ))}
-    </div>
+    <>
+    <h2 className="title">Recien agragado</h2>
+      <div className="sliderProduct">
+        {products.map((product) => (
+          <Card product={product} key={product.id_product} />
+        ))}
+      </div>
+    </>
   );
 }

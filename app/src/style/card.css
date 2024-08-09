@@ -4,15 +4,13 @@
   align-items: center;
   background: #fff;
   color: #000;
-  border: 2px solid gray;
   border-radius: 8px;
+  cursor: pointer;
   box-shadow: 0 5px 4px rgba(0, 0, 0, 0.5);
   max-width: 30vw;
   width: 35%;
   max-width: 200px;
-  margin: 20px auto;
-  padding: 15px;
-
+  margin: 20px 0;
 }
 
 .card:hover {
@@ -20,30 +18,24 @@
   transform: translateY(-5px);
 }
 
-
-.card * {
-  color: #000;
-}
-
 .cardHeader {
-  padding-bottom: 5px;
-  margin-bottom: 10px;
+  margin: 0.5em;
+  position: absolute;
 }
 
 .cardHeader h2 {
   margin: 0;
-  font-size: 20px; /* Fuente más pequeña */
-  color: #000; /* Color del texto en negro */
+  font-size: 1.1rem;
+  color: #000;
 }
 
 .cardBody {
-  overflow: auto; /* Para manejar el contenido desbordante */
+  text-align: center;
 }
 
 .cardBody p {
-  line-height: 1.4; /* Menor altura de línea para encajar mejor */
-  margin-bottom: 5px; /* Menos espacio entre párrafos */
-  color: #000; /* Color del texto en negro */
+  font-size: 1rem;
+  margin-bottom: 3px;
 }
 
 .cardBody ul {

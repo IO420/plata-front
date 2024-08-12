@@ -1,0 +1,8 @@
+.searchContainer{
+    display: flex;
+    gap: 20px;
+    max-width: 90vw;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}

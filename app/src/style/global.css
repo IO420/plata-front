@@ -3,7 +3,7 @@
     margin: 0;
     border-radius: 0.5rem;
     font-family: SF Pro Display,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
-    /* scrollbar-width: none; */
+    scrollbar-width: none;
 }
 
 body{

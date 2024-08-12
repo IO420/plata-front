@@ -1,0 +1,18 @@
+.kind{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.5);
+}
+
+.kind:hover{
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 8px 16px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.kindHeader{
+    position: absolute;
+}

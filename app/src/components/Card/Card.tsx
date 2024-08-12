@@ -10,13 +10,11 @@ export default function Card({ product }: ProductProps) {
   
   return (
     <div className="card">
-      <div>
         <img
           src="https://via.placeholder.com/150"
           alt="Imagen de ejemplo"
           className="cardImage"
         />
-      </div>
       <div className="cardHeader">
         <h2>{product.name}</h2>
       </div>

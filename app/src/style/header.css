@@ -25,22 +25,3 @@ header{
     font-size: 24px;
     text-decoration: none;
   }
-  
-  .navLinks {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navLink {
-    color: #fff;
-    text-decoration: none;
-    padding: 0 15px;
-    font-size: 18px;
-  }
-  
-  .navLink:hover {
-    text-decoration: underline;
-  }
-  

@@ -1,10 +1,8 @@
 .card {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
-  background: #fff;
-  color: #000;
-  border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 5px 4px rgba(0, 0, 0, 0.5);
   max-width: 30vw;
@@ -14,19 +12,17 @@
 }
 
 .card:hover {
+  transition: all 0.2s ease-in-out;
   box-shadow: 0 8px 16px 4px rgba(0, 0, 0, 0.2);
   transform: translateY(-5px);
 }
 
 .cardHeader {
-  margin: 0.5em;
   position: absolute;
 }
 
 .cardHeader h2 {
-  margin: 0;
   font-size: 1.1rem;
-  color: #000;
 }
 
 .cardBody {
@@ -38,25 +34,6 @@
   margin-bottom: 3px;
 }
 
-.cardBody ul {
-  margin: 0;
-  padding-left: 15px; /* Menor padding en la lista */
-}
-
 .cardBody ul li {
-  margin-bottom: 3px; /* Menos espacio entre elementos de la lista */
-  color: #000; /* Color del texto en negro */
-}
-
-.cardFooter {
-  border-top: 1px solid #ddd;
-  padding-top: 5px; /* Menos padding en el pie de página */
-  margin-top: 10px; /* Menos margen entre cuerpo y pie de página */
-  text-align: right;
-}
-
-.cardFooter p {
-  margin: 0;
-  font-size: 14px; /* Fuente más pequeña para el pie de página */
-  color: #000; /* Color del texto en negro */
+  margin-bottom: 3px; 
 }

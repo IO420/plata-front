@@ -5,8 +5,7 @@ import "../../style/card.css";
 import { Product } from "../../services/type";
 import Card from "../Card/Card";
 
-
-export default function Mapeo({filters}:any) {
+export default function Mapeo({filters}: any) {
   const url = `/product?${filters}`;
   const { data, error } = useFetch(url);
   const [products, setProducts] = useState<Product[]>([]);
@@ -25,8 +24,7 @@ export default function Mapeo({filters}:any) {
       if (slider) {
         if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
           slider.scrollLeft = slider.scrollWidth / 3;
-        }
-        else if (slider.scrollLeft <= 0) {
+        } else if (slider.scrollLeft <= 0) {
           slider.scrollLeft = slider.scrollWidth / 3;
         }
       }
@@ -47,7 +45,7 @@ export default function Mapeo({filters}:any) {
   if (error) {
     return (
       <div>
-        {error} || {"error"}
+        {"Error al cargar los productos"}
       </div>
     );
   }

@@ -58,12 +58,15 @@ main{
     flex-direction: column;
 }
 
-button{
-    max-width: 15vw;
-    margin: 5px 0px;
-    
-}
-
 ul,ol{
     list-style: none;
+}
+
+button{
+    display: unset;
+    position: unset;
+    box-shadow: unset;
+    cursor: unset;
+    flex-direction: unset;
+    align-items: unset;
 }

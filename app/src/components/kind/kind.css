@@ -1,9 +1,12 @@
 .kind{
     display: flex;
     flex-direction: column;
+    max-width: 150px;
+    max-height: 150px;
     align-items: center;
     position: relative;
     cursor: pointer;
+    margin: 10px;
     box-shadow: 0 5px 4px rgba(0, 0, 0, 0.5);
 }
 

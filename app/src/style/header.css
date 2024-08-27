@@ -1,5 +1,5 @@
 header{
-    background-color:rgba(22, 22, 23, .8);
+    background-color:#bebebe92;
     backdrop-filter: saturate(180%) blur(20px);
     display: flex;
     justify-content: center;
@@ -10,7 +10,7 @@ header{
 }
 
 .navbar {
-    background-color: #33333379;
+    background-color: #bebebe92;
     padding: 10px 20px;
   }
   

@@ -8,9 +8,10 @@ import { useFetch } from '../../services/productService';
 export default function Search() {
   const [filters, setFilters] = useState({});
   const { data: kinds, error } = useFetch("/kind");
+  const notfountimg:string = 'https://static.vecteezy.com/system/resources/previews/023/911/566/original/jewel-icon-jewelry-illustration-sign-bijouterie-symbol-or-logo-vector.jpg';
 
   const handleKindClick = (kind: string) => {
-    console.log({kind});
+    console.log({ kind });
     setFilters({ kind });
   };
 
@@ -20,13 +21,16 @@ export default function Search() {
 
   return (
     <>
+      <h2>Categorias</h2>
       <div className="searchContainer">
         {kinds.map((kind: any) => (
-          <Kind
+          <Kind 
             key={kind.id_kind}
-            img={kind.url}
-            title={kind.name}
-            onClick={handleKindClick}
+            kind={{
+              ...kind,
+              url: kind.url || notfountimg,
+              onClick: handleKindClick,
+            }}
           />
         ))}
       </div>

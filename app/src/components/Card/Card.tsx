@@ -11,7 +11,7 @@ export default function Card({ product }: ProductProps) {
   return (
     <div className="card">
         <img
-          src="https://via.placeholder.com/150"
+          src={product.url||"https://static.vecteezy.com/system/resources/previews/023/911/566/original/jewel-icon-jewelry-illustration-sign-bijouterie-symbol-or-logo-vector.jpg"}
           alt="Imagen de ejemplo"
           className="cardImage"
         />

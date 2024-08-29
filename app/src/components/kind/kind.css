@@ -1,8 +1,10 @@
 .kind{
     display: flex;
     flex-direction: column;
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 10vw;
+    min-width: 100px;
+    max-height: auto;
+    min-height: 100px;
     align-items: center;
     position: relative;
     cursor: pointer;
@@ -18,4 +20,11 @@
 
 .kindHeader{
     position: absolute;
+    backdrop-filter: saturate(1%) blur(2px);
+}
+
+.kindimg{
+    max-width: 10vw;
+    min-width: 100px;
+    max-height: auto;
 }

@@ -1,17 +1,17 @@
+import { KindProps } from "../../services/type";
 import "./kind.css";
 
-interface KindProps {
-  title: string;
-  img: string;
-  onClick: (title: string) => void;
-}
+export default function Kind({kind}: KindProps) {
 
-export default function Kind(kindProps: KindProps) {
+  if(!kind){
+    return null;
+  }
+
   return (
-    <button className="kind" onClick={() => kindProps.onClick(kindProps.title)}>
-      <img src={kindProps.img} alt="Imagen de ejemplo" className="cardImage" />
+    <button className="kind" onClick={() => kind.onClick(kind.name)}>
+      <img src={kind.url} alt="Imagen de ejemplo" className="kindimg" />
       <div className="kindHeader">
-        <h2>{kindProps.title}</h2>
+        <h2>{kind.name}</h2>
       </div>
     </button>
   );

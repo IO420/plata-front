@@ -1,9 +1,12 @@
 import { KindProps } from "../../services/type";
 import "./kind.css";
 
-export default function Kind({kind}: KindProps) {
+const capitalizeFirstLetter = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
 
-  if(!kind){
+export default function Kind({ kind }: KindProps) {
+  if (!kind) {
     return null;
   }
 
@@ -11,7 +14,7 @@ export default function Kind({kind}: KindProps) {
     <button className="kind" onClick={() => kind.onClick(kind.name)}>
       <img src={kind.url} alt="Imagen de ejemplo" className="kindimg" />
       <div className="kindHeader">
-        <h2>{kind.name}</h2>
+        <h2>{capitalizeFirstLetter(kind.name)}</h2>
       </div>
     </button>
   );

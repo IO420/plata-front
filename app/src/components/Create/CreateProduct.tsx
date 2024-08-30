@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import "../../style/global.css";
+import "./create.css";
 
 const useField = (type: string) => {
   const [value, setValue] = useState("");
@@ -23,6 +24,7 @@ export default function CreateProduct() {
   const price = useField("number");
   const [kinds, setKinds] = useState<string[]>([""]);
   const [image, setImage] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
 
   const handleKindChange = (index: number, value: string) => {
     const newKinds = [...kinds];
@@ -39,10 +41,30 @@ export default function CreateProduct() {
     setKinds(newKinds);
   };
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (file: File) => {
+    setImage(file);
+    setPreview(URL.createObjectURL(file));
+  };
+
+  const handleFileInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     if (event.target.files && event.target.files[0]) {
-      setImage(event.target.files[0]);
+      handleImageChange(event.target.files[0]);
     }
+  };
+
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.dataTransfer.files && event.dataTransfer.files[0]) {
+      handleImageChange(event.dataTransfer.files[0]);
+    }
+  };
+
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
   };
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -61,36 +83,49 @@ export default function CreateProduct() {
 
   return (
     <div className="classic">
-      <form className="form flex" onSubmit={handleSubmit}>
-        <div>
-          <div className="input">
-            <label htmlFor="image">Imagen</label>
-            <input
-              id="image"
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-            />
+      <form className="form flex row" onSubmit={handleSubmit}>
+        <div className="input center">
+          <label htmlFor="image">Imagen</label>
+          <input
+            id="image"
+            type="file"
+            accept="image/*"
+            onChange={handleFileInputChange}
+            style={{ display: "none" }}
+          />
+          <div
+            className="image-preview"
+            onDrop={handleDrop}
+            onDragOver={handleDragOver}
+            onClick={() => document.getElementById("image")?.click()}
+          >
+            {preview ? (
+              <img src={preview} alt="Preview" className="preview-img" />
+            ) : (
+              <span className="preview-img">
+                Arrastra una imagen o haz clic para seleccionar
+              </span>
+            )}
           </div>
         </div>
         <div>
           <div className="input">
-            <label htmlFor="name">Nombre</label>
+            <label>Nombre</label>
             <input id="name" {...name} />
           </div>
 
           <div className="input">
-            <label htmlFor="description">Descripción</label>
+            <label>Descripción</label>
             <input id="description" {...description} />
           </div>
 
           <div className="input">
-            <label htmlFor="price">Precio</label>
+            <label>Precio</label>
             <input id="price" {...price} />
           </div>
 
           {kinds.map((kind, index) => (
-            <div className="input" key={index}>
+            <div className="kind-wrapper" key={index}>
               <label htmlFor={`kind-${index}`}>Tipo {index + 1}</label>
               <input
                 id={`kind-${index}`}
@@ -99,9 +134,13 @@ export default function CreateProduct() {
                 onChange={(e) => handleKindChange(index, e.target.value)}
                 placeholder="Tipo"
               />
-              <button type="button" onClick={() => handleRemoveKind(index)}>
-                Eliminar
-              </button>
+              <span
+                className="delete-button"
+                onClick={() => handleRemoveKind(index)}
+                role="button"
+              >
+                ×
+              </span>
             </div>
           ))}
 

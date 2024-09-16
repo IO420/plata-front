@@ -8,7 +8,7 @@
 
 h2{
     text-align: center;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 body{
@@ -79,6 +79,7 @@ button{
     cursor: unset;
     flex-direction: unset;
     align-items: unset;
+    border: unset;
     margin: 5px;
     padding: 5px;
 }

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "../../style/global.css";
 import "./create.css";
+import { useFetch } from "../../services/productService";
 
 const useField = (type: string) => {
   const [value, setValue] = useState("");
@@ -23,7 +24,7 @@ export default function CreateProduct() {
   const description = useField("text");
   const price = useField("number");
   const [kinds, setKinds] = useState<string[]>([""]);
-  const [image, setImage] = useState<File | null>(null);
+  const [imageBase64, setImageBase64] = useState<string | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
   const handleKindChange = (index: number, value: string) => {
@@ -41,9 +42,20 @@ export default function CreateProduct() {
     setKinds(newKinds);
   };
 
+  const convertToBase64 = (file: File) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImageBase64(reader.result as string);
+    };
+    reader.onerror = (error) => {
+      console.error("Error al convertir la imagen a base64:", error);
+    };
+  };
+
   const handleImageChange = (file: File) => {
-    setImage(file);
     setPreview(URL.createObjectURL(file));
+    convertToBase64(file);
   };
 
   const handleFileInputChange = (
@@ -67,19 +79,61 @@ export default function CreateProduct() {
     event.stopPropagation();
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    const data = {
-      name: name.value,
-      description: description.value,
-      price: price.value,
-      kinds: kinds.filter((kind) => kind !== ""),
-      image,
+  
+    const imageUploadData = {
+      fotografia: imageBase64,
+      nombre: name,
     };
+  
+    try {
+      const imageResponse = await fetch("http://localhost:3000/images", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(imageUploadData),
+      });
+  
+      const imageResult = await imageResponse.json();
+  
+      if (!imageResponse.ok) {
+        console.error("Error uploading image:", imageResult);
+        return;
+      }
+  
+      const imageUrl = imageResult.imageUrl;
+  
 
-    console.log(data);
+      const productData = {
+        name: name.value.trim(),
+        description: description.value.trim(),
+        price: Number(price.value),
+        kinds: kinds.filter((kind) => kind.trim() !== ""),
+        url: imageUrl,
+      };
+  
+      const productResponse = await fetch("http://localhost:3000/products", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(productData),
+      });
+  
+      const productResult = await productResponse.json();
+  
+      if (!productResponse.ok) {
+        console.error("Error creating product:", productResult);
+      } else {
+        console.log("Product created successfully:", productResult);
+      }
+    } catch (error) {
+      console.error("Error during product creation:", error);
+    }
   };
+  
 
   return (
     <div className="classic">

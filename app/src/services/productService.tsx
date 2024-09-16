@@ -11,7 +11,8 @@ export const useFetch = (
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000${url}`, {
+    const fetchData = async () => {
+    fetch(`http://192.168.100.7:3000${url}`, {
       method,
       headers,
       body: method !== "GET" && body ? body : null,
@@ -19,7 +20,10 @@ export const useFetch = (
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => setError(error));
-  }, [url, method]);
+    };
+
+    fetchData();
+  }, [url, method, body]);
 
   return { data, error };
 };

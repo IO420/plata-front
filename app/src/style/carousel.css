@@ -1,55 +1,38 @@
-/* Estilos generales para el carrusel */
-.carousel {
-  position: relative;
+.slider-frame{
   width: 100%;
-  margin: auto;
-}
-
-.carousel-inner {
-  display: flex;
+  height: auto;
+  margin: 50px auto 0;
   overflow: hidden;
+
+  animation: slide 16s infinite alternate ease-in-out;
 }
 
-.carousel-item {
+.slider-frame ul{
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  padding: 0;
+  width: 400%;
+}
+
+.slider-frame li {
+  list-style: none;
   width: 100%;
-  transition: transform 0.5s ease-in-out;
 }
 
-.carousel-card-container {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+.slider-frame img{
+  width: 100%;
+  height: auto;
 }
 
-.carousel-card {
-  flex: 1;
-  max-width: 300px; /* Ajusta el tamaño de las tarjetas */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
+@keyframes slide {
+  0% {margin-left: 0%;}
+  20% {margin-left: 0%;}
 
-.carousel-card:hover {
-  transform: scale(1.05);
-}
+  25% {margin-left: -100%;}
+  45% {margin-left: -100%;}
 
-.loading,
-.error {
-  text-align: center;
-  padding: 2rem;
-  font-size: 1.25rem;
-}
+  50% {margin-left: -200%;}
+  70% {margin-left: -200%;}
 
-.carousel-control-prev,
-.carousel-control-next {
-  width: 5%;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo para los íconos */
-  border-radius: 50%;
-  padding: 0.5rem;
+  75% {margin-left: -300%;}
+  95% {margin-left: -300%;}
 }

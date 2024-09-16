@@ -8,19 +8,9 @@ export default function Header() {
       <nav className='navbar'>
         <div className='container'>
           <Link href="/" className='logo'>
-            MyApp
+            Plata
           </Link>
           <ul className='navLinks'>
-            <li>
-              <Link href="/" className='navLink'>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className='navLink'>
-                About
-              </Link>
-            </li>
             <li>
               <Link href="/contact" className='navLink'>
                 Contact

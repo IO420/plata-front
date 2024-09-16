@@ -1,0 +1,50 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.image-preview {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  max-width: 300px;
+  height: 200px;
+  position: relative;
+  text-align: center;
+}
+.preview-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.center {
+  justify-content: center;
+  align-items: center;
+}
+.kind-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.delete-button {
+  font-family: 'Courier New', Courier, monospace;
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  background-color: rgba(236, 29, 29, 0.776);
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+}
+
+.delete-button:hover {
+  background-color: rgba(200, 20, 20, 0.8);
+}

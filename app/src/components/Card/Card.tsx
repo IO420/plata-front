@@ -1,22 +1,31 @@
-import React from 'react';
-import '../../style/card.css';
+import React from "react";
+import "../../style/card.css";
+import { ProductProps } from "../../services/type";
 
-interface CardProps {
-  title: string;
-  content: string;
-  price: string;
-}
+export default function Card({ product }: ProductProps) {
 
-export default function Card({ title, content, price }: CardProps) {
+  if(!product){
+    return null;
+  }
+  
   return (
-    <div className='card'>
-      <div className='cardHeader'>
-        <h2 className='text'>{title}</h2>
+    <div className="card">
+        <img
+          src={product.url||"https://static.vecteezy.com/system/resources/previews/023/911/566/original/jewel-icon-jewelry-illustration-sign-bijouterie-symbol-or-logo-vector.jpg"}
+          alt="Imagen de ejemplo"
+          className="cardImage"
+        />
+      <div className="cardHeader">
+        <h2>{product.name}</h2>
       </div>
-      <div className='cardBody'>
-        <img src="https://via.placeholder.com/150" alt="Imagen de ejemplo" className='cardImage' />
-        <p className='text'>{content}</p>
-        <p className='text'>{price}</p>
+      <div className="cardBody">
+        <p>{product.description}</p>
+        <p>{product.price}</p>
+        {/* <div>
+          {product.kinds.map((kind) => (
+            <p key={kind.id_kind}>{kind.name}</p>
+          ))}
+        </div> */}
       </div>
     </div>
   );

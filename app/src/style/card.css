@@ -1,60 +1,45 @@
 .card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 300px; /* Tamaño más pequeño */
-    width: 100%;
-    height: 300px; /* Altura fija para hacerlo más cuadrado */
-    margin: 20px auto;
-    padding: 15px; /* Menos padding para reducir el tamaño */
-    box-sizing: border-box;
-  }
-  
-  .cardHeader {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 5px; /* Menos espacio en la cabecera */
-    margin-bottom: 10px; /* Menos espacio entre cabecera y cuerpo */
-  }
-  
-  .cardHeader h2 {
-    margin: 0;
-    font-size: 20px; /* Fuente más pequeña */
-    color: #000; /* Color del texto en negro */
-  }
-  
-  .cardBody {
-    overflow: auto; /* Para manejar el contenido desbordante */
-  }
-  
-  .cardBody p {
-    line-height: 1.4; /* Menor altura de línea para encajar mejor */
-    margin-bottom: 5px; /* Menos espacio entre párrafos */
-    color: #000; /* Color del texto en negro */
-  }
-  
-  .cardBody ul {
-    margin: 0;
-    padding-left: 15px; /* Menor padding en la lista */
-  }
-  
-  .cardBody ul li {
-    margin-bottom: 3px; /* Menos espacio entre elementos de la lista */
-    color: #000; /* Color del texto en negro */
-  }
-  
-  .cardFooter {
-    border-top: 1px solid #ddd;
-    padding-top: 5px; /* Menos padding en el pie de página */
-    margin-top: 10px; /* Menos margen entre cuerpo y pie de página */
-    text-align: right;
-  }
-  
-  .cardFooter p {
-    margin: 0;
-    font-size: 14px; /* Fuente más pequeña para el pie de página */
-    color: #000; /* Color del texto en negro */
-  }
-  
-  .text{
-    text-align: center;
-  }
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.5);
+  max-width: 150px;
+  width: 35vw;
+  max-height: 200px;
+  height: 35vh;
+  margin: 20px 0;
+}
+
+.card:hover {
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 8px 16px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.cardHeader {
+  position: absolute;
+}
+
+.cardHeader h2 {
+  font-size: 1.1rem;
+}
+
+.cardBody {
+  text-align: center;
+}
+
+.cardBody p {
+  font-size: 1rem;
+  margin-bottom: 3px;
+}
+
+.cardBody ul li {
+  margin-bottom: 3px; 
+}
+
+.cardImage{
+  max-width: inherit;
+  max-height: inherit;
+}

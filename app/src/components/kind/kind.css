@@ -1,0 +1,30 @@
+.kind{
+    display: flex;
+    flex-direction: column;
+    max-width: 10vw;
+    min-width: 100px;
+    max-height: auto;
+    min-height: 100px;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.5);
+}
+
+.kind:hover{
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 8px 16px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.kindHeader{
+    position: absolute;
+    backdrop-filter: saturate(1%) blur(2px);
+}
+
+.kindimg{
+    max-width: 10vw;
+    min-width: 100px;
+    max-height: auto;
+}

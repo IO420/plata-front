@@ -1,9 +1,9 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: lato;
-    color: white;
     border-radius: 0.5rem;
+    font-family: SF Pro Display,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    scrollbar-width: none;
 }
 
 h2{
@@ -12,9 +12,73 @@ h2{
 }
 
 body{
-    background-image: url('https://img.freepik.com/vector-gratis/fondo-monocromatico-blanco-estilo-papel_52683-66443.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1722643200&semt=sph');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: 100%;
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
+    background-position-x: center;
+    height: 100vh;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.flex{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 90vw;
+    justify-content: space-between;
+}
+
+.classic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 10px;
+}
+
+.form{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 10px;
+}
+
+.form [type='text'],
+.form [type='password']
+{
+    width: 90%;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    position: relative;
+}
+
+ul,ol{
+    list-style: none;
+}
+
+button{
+    display: unset;
+    position: unset;
+    box-shadow: unset;
+    cursor: unset;
+    flex-direction: unset;
+    align-items: unset;
+    margin: 5px;
+    padding: 5px;
 }

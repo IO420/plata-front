@@ -1,13 +1,19 @@
-import Carousel from "./src/components/Carousel/carousel";
+import React from "react";
+import Mapeo from "./src/components/Mapeo/Mapeo";
 import Header from "./src/components/Header/Header";
+import Slider from "./src/components/Slider/Slider";
+import Footer from "./src/components/Footer/Footer";
+import Search from "./src/components/search/Search";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <body>
-        <Carousel/>
-      </body>
+      <main>
+        <Slider />
+        <Search/>
+      </main>
+      <Footer/>
     </>
   );
 }

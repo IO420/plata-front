@@ -1,13 +1,16 @@
 header{
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color:#bebebe92;
+    backdrop-filter: saturate(180%) blur(20px);
     display: flex;
     justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-radius: 0;
 }
 
-/* styles/header.css */
-
 .navbar {
-    background-color: #33333379;
+    background-color: #bebebe92;
     padding: 10px 20px;
   }
   
@@ -22,22 +25,3 @@ header{
     font-size: 24px;
     text-decoration: none;
   }
-  
-  .navLinks {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navLink {
-    color: #fff;
-    text-decoration: none;
-    padding: 0 15px;
-    font-size: 18px;
-  }
-  
-  .navLink:hover {
-    text-decoration: underline;
-  }
-  

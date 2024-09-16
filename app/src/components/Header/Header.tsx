@@ -6,18 +6,10 @@ export default function Header() {
   return (
     <header>
       <nav className='navbar'>
-        <div className='container'>
-          <Link href="/" className='logo'>
-            Plata
-          </Link>
-          <ul className='navLinks'>
-            <li>
-              <Link href="/contact" className='navLink'>
-                Contact
-              </Link>
-            </li>
+          <ul>
+            <li>1_0</li>
+            <li></li>
           </ul>
-        </div>
       </nav>
     </header>
   );

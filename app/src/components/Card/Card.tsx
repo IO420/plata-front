@@ -3,29 +3,26 @@ import "../../style/card.css";
 import { ProductProps } from "../../services/type";
 
 export default function Card({ product }: ProductProps) {
-
-  if(!product){
+  if (!product) {
     return null;
   }
-  
+
+  const defaultImage = "https://static.vecteezy.com/system/resources/previews/023/911/566/original/jewel-icon-jewelry-illustration-sign-bijouterie-symbol-or-logo-vector.jpg";
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = defaultImage;
+  };
+
   return (
     <div className="card">
-        <img
-          src={product.url||"https://static.vecteezy.com/system/resources/previews/023/911/566/original/jewel-icon-jewelry-illustration-sign-bijouterie-symbol-or-logo-vector.jpg"}
-          alt="Imagen de ejemplo"
-          className="cardImage"
-        />
+      <img
+        src={`http://192.168.100.7:3000/imagenes/${product.url}` || defaultImage}
+        alt={product.name}
+        className="cardImage"
+        onError={handleImageError}
+      />
       <div className="cardHeader">
         <h2>{product.name}</h2>
-      </div>
-      <div className="cardBody">
-        <p>{product.description}</p>
-        <p>{product.price}</p>
-        {/* <div>
-          {product.kinds.map((kind) => (
-            <p key={kind.id_kind}>{kind.name}</p>
-          ))}
-        </div> */}
       </div>
     </div>
   );

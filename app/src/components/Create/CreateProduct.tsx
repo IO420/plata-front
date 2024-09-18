@@ -84,7 +84,7 @@ export default function CreateProduct() {
   
     const imageUploadData = {
       fotografia: imageBase64,
-      nombre: name,
+      nombre: name.value,
     };
   
     try {
@@ -114,7 +114,7 @@ export default function CreateProduct() {
         url: imageUrl,
       };
   
-      const productResponse = await fetch("http://localhost:3000/products", {
+      const productResponse = await fetch("http://localhost:3000/product", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

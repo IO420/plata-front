@@ -3,10 +3,11 @@
   position: relative;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
-  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.5);
-  max-width: 150px;
   width: 35vw;
+  max-width: 250px;
+  min-width: 150px;
   max-height: 200px;
   height: 35vh;
   margin: 20px 0;
@@ -14,16 +15,12 @@
 
 .card:hover {
   transition: all 0.2s ease-in-out;
-  box-shadow: 0 8px 16px 4px rgba(0, 0, 0, 0.2);
   transform: translateY(-5px);
 }
 
-.cardHeader {
-  position: absolute;
-}
-
 .cardHeader h2 {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
+  margin: auto;
 }
 
 .cardBody {
@@ -42,4 +39,7 @@
 .cardImage{
   max-width: inherit;
   max-height: inherit;
+  height: inherit;
+  width: inherit;
+  object-fit: cover;
 }

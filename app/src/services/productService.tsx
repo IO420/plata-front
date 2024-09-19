@@ -12,7 +12,7 @@ export const useFetch = (
 
   useEffect(() => {
     const fetchData = async () => {
-    fetch(`http://192.168.100.7:3000${url}`, {
+    fetch(`http://localhost:3000${url}`, {
       method,
       headers,
       body: method !== "GET" && body ? body : null,

@@ -16,7 +16,7 @@ export default function Card({ product }: ProductProps) {
   return (
     <div className="card">
       <img
-        src={`http://192.168.100.7:3000/imagenes/${product.url}` || defaultImage}
+        src={`http://localhost:3000/imagenes/${product.url}` || defaultImage}
         alt={product.name}
         className="cardImage"
         onError={handleImageError}

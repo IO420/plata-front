@@ -1,7 +1,3 @@
-interface Kind {
-  id_kind: number;
-  name: string;
-}
 
 export interface Product {
   id_product: number;
@@ -16,7 +12,7 @@ export interface ProductProps{
   product:Product
 }
 
-interface Kind {
+export interface Kind {
   id_kind:number;
   name: string;
   url:string;

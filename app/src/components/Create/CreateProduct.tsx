@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../style/global.css";
 import "./create.css";
 import { useFetch } from "../../services/productService";
+import { Kind } from "../../services/type";
 
 const useField = (type: string) => {
   const [value, setValue] = useState("");
@@ -15,31 +16,40 @@ const useField = (type: string) => {
     type,
     value,
     onChange,
-    placeholder: type.charAt(0).toUpperCase() + type.slice(1),
   };
 };
 
 export default function CreateProduct() {
   const name = useField("text");
   const description = useField("text");
-  const price = useField("number");
-  const [kinds, setKinds] = useState<string[]>([""]);
+  const price = useField("text");
+  const [kinds, setKinds] = useState<Kind[]>([]);
+  const [selectedKinds, setSelectedKinds] = useState<number[]>([]);
   const [imageBase64, setImageBase64] = useState<string | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
-  const handleKindChange = (index: number, value: string) => {
-    const newKinds = [...kinds];
-    newKinds[index] = value;
-    setKinds(newKinds);
+  // Fetch kinds from API
+  const { data: kindsData, error } = useFetch("/kind");
+
+  useEffect(() => {
+    if (kindsData) {
+      setKinds(kindsData); // Guarda los kinds obtenidos de la API
+    }
+  }, [kindsData]);
+
+  const handleKindChange = (index: number, value: number) => {
+    const newSelectedKinds = [...selectedKinds];
+    newSelectedKinds[index] = value;
+    setSelectedKinds(newSelectedKinds);
   };
 
   const handleAddKind = () => {
-    setKinds([...kinds, ""]);
+    setSelectedKinds([...selectedKinds, 0]); // Agrega un nuevo campo vacío
   };
 
   const handleRemoveKind = (index: number) => {
-    const newKinds = kinds.filter((_, i) => i !== index);
-    setKinds(newKinds);
+    const newSelectedKinds = selectedKinds.filter((_, i) => i !== index);
+    setSelectedKinds(newSelectedKinds);
   };
 
   const convertToBase64 = (file: File) => {
@@ -58,9 +68,7 @@ export default function CreateProduct() {
     convertToBase64(file);
   };
 
-  const handleFileInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       handleImageChange(event.target.files[0]);
     }
@@ -104,13 +112,12 @@ export default function CreateProduct() {
       }
   
       const imageUrl = imageResult.imageUrl;
-  
 
       const productData = {
         name: name.value.trim(),
         description: description.value.trim(),
         price: Number(price.value),
-        kinds: kinds.filter((kind) => kind.trim() !== ""),
+        kinds: selectedKinds, // Usa los kinds seleccionados
         url: imageUrl,
       };
   
@@ -134,7 +141,6 @@ export default function CreateProduct() {
     }
   };
   
-
   return (
     <div className="classic">
       <form className="form flex row" onSubmit={handleSubmit}>
@@ -178,16 +184,21 @@ export default function CreateProduct() {
             <input id="price" {...price} />
           </div>
 
-          {kinds.map((kind, index) => (
+          {selectedKinds.map((kind, index) => (
             <div className="kind-wrapper" key={index}>
               <label htmlFor={`kind-${index}`}>Tipo {index + 1}</label>
-              <input
+              <select
                 id={`kind-${index}`}
-                type="text"
                 value={kind}
-                onChange={(e) => handleKindChange(index, e.target.value)}
-                placeholder="Tipo"
-              />
+                onChange={(e) => handleKindChange(index, Number(e.target.value))}
+              >
+                <option value={0}>Selecciona un tipo</option>
+                {kinds.map((kindOption) => (
+                  <option key={kindOption.id_kind} value={kindOption.id_kind}>
+                    {kindOption.name}
+                  </option>
+                ))}
+              </select>
               <span
                 className="delete-button"
                 onClick={() => handleRemoveKind(index)}
@@ -199,7 +210,7 @@ export default function CreateProduct() {
           ))}
 
           <button type="button" onClick={handleAddKind}>
-            Agregar otro kind
+            Agregar Caracteristicas
           </button>
         </div>
         <button type="submit">Enviar</button>

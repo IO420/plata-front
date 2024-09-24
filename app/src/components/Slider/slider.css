@@ -11,9 +11,9 @@
 .sliderProduct {
   display: flex;
   width: 100vw;
-  height: 250px;
   position: relative;
   overflow: scroll;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   gap: 1em;
   margin-bottom: 40px

@@ -24,7 +24,7 @@ export default function CreateProduct() {
   const description = useField("text");
   const price = useField("text");
   const [kinds, setKinds] = useState<Kind[]>([]);
-  const [selectedKinds, setSelectedKinds] = useState<number[]>([]);
+  const [selectedKinds, setSelectedKinds] = useState<any[]>([]);
   const [imageBase64, setImageBase64] = useState<string | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
@@ -39,12 +39,12 @@ export default function CreateProduct() {
 
   const handleKindChange = (index: number, value: number) => {
     const newSelectedKinds = [...selectedKinds];
-    newSelectedKinds[index] = value;
+    newSelectedKinds[index] = { id_kind: value }; // Store as an object with id_kind
     setSelectedKinds(newSelectedKinds);
   };
 
   const handleAddKind = () => {
-    setSelectedKinds([...selectedKinds, 0]); // Agrega un nuevo campo vacío
+    setSelectedKinds([...selectedKinds, { id_kind: 0 }]); // Add a new kind object
   };
 
   const handleRemoveKind = (index: number) => {
@@ -68,7 +68,9 @@ export default function CreateProduct() {
     convertToBase64(file);
   };
 
-  const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     if (event.target.files && event.target.files[0]) {
       handleImageChange(event.target.files[0]);
     }
@@ -89,28 +91,28 @@ export default function CreateProduct() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-  
+
     const imageUploadData = {
       fotografia: imageBase64,
       nombre: name.value,
     };
-  
+
     try {
       const imageResponse = await fetch("http://localhost:3000/images", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(imageUploadData),
       });
-  
+
       const imageResult = await imageResponse.json();
-  
+
       if (!imageResponse.ok) {
         console.error("Error uploading image:", imageResult);
         return;
       }
-  
+
       const imageUrl = imageResult.imageUrl;
 
       const productData = {
@@ -120,17 +122,17 @@ export default function CreateProduct() {
         kinds: selectedKinds, // Usa los kinds seleccionados
         url: imageUrl,
       };
-  
+
       const productResponse = await fetch("http://localhost:3000/product", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(productData),
       });
-  
+
       const productResult = await productResponse.json();
-  
+
       if (!productResponse.ok) {
         console.error("Error creating product:", productResult);
       } else {
@@ -140,78 +142,85 @@ export default function CreateProduct() {
       console.error("Error during product creation:", error);
     }
   };
-  
+
   return (
     <div className="classic">
-      <form className="form flex row" onSubmit={handleSubmit}>
-        <div className="input center">
-          <label htmlFor="image">Imagen</label>
-          <input
-            id="image"
-            type="file"
-            accept="image/*"
-            onChange={handleFileInputChange}
-            style={{ display: "none" }}
-          />
-          <div
-            className="image-preview"
-            onDrop={handleDrop}
-            onDragOver={handleDragOver}
-            onClick={() => document.getElementById("image")?.click()}
-          >
-            {preview ? (
-              <img src={preview} alt="Preview" className="preview-img" />
-            ) : (
-              <span className="preview-img">
-                Arrastra una imagen o haz clic para seleccionar
-              </span>
-            )}
-          </div>
-        </div>
-        <div>
-          <div className="input">
-            <label>Nombre</label>
-            <input id="name" {...name} />
-          </div>
-
-          <div className="input">
-            <label>Descripción</label>
-            <input id="description" {...description} />
-          </div>
-
-          <div className="input">
-            <label>Precio</label>
-            <input id="price" {...price} />
-          </div>
-
-          {selectedKinds.map((kind, index) => (
-            <div className="kind-wrapper" key={index}>
-              <label htmlFor={`kind-${index}`}>Tipo {index + 1}</label>
-              <select
-                id={`kind-${index}`}
-                value={kind}
-                onChange={(e) => handleKindChange(index, Number(e.target.value))}
-              >
-                <option value={0}>Selecciona un tipo</option>
-                {kinds.map((kindOption) => (
-                  <option key={kindOption.id_kind} value={kindOption.id_kind}>
-                    {kindOption.name}
-                  </option>
-                ))}
-              </select>
-              <span
-                className="delete-button"
-                onClick={() => handleRemoveKind(index)}
-                role="button"
-              >
-                ×
-              </span>
+      <form className="form " onSubmit={handleSubmit}>
+        <h2>Creacion de Producto</h2>
+        <div className="flex row">
+          <div className="input center">
+            <input
+              id="image"
+              type="file"
+              accept="image/*"
+              onChange={handleFileInputChange}
+              style={{ display: "none" }}
+            />
+            <div
+              className="image-preview"
+              onDrop={handleDrop}
+              onDragOver={handleDragOver}
+              onClick={() => document.getElementById("image")?.click()}
+            >
+              {preview ? (
+                <img src={preview} alt="Preview" className="preview-img" />
+              ) : (
+                <span className="preview-img">
+                  Arrastra una imagen o haz clic para seleccionar
+                </span>
+              )}
             </div>
-          ))}
+          </div>
 
-          <button type="button" onClick={handleAddKind}>
-            Agregar Caracteristicas
-          </button>
+          <div>
+            <div className="input">
+              <label>Nombre</label>
+              <input id="name" {...name} />
+            </div>
+
+            <div className="input">
+              <label>Descripción</label>
+              <input id="description" {...description} />
+            </div>
+
+            <div className="input">
+              <label>Precio</label>
+              <input id="price" {...price} />
+            </div>
+
+            <div className="kind-container">
+            {selectedKinds.map((kind, index) => (
+              <div className="kind-wrapper" key={index}>
+                <label htmlFor={`kind-${index}`}>Tipo {index + 1}</label>
+                <select
+                  id={`kind-${index}`}
+                  value={kind.value}
+                  onChange={(e) =>
+                    handleKindChange(index, Number(e.target.value))
+                  }
+                >
+                  <option value={0}>Selecciona un tipo</option>
+                  {kinds.map((kindOption) => (
+                    <option key={kindOption.id_kind} value={kindOption.id_kind}>
+                      {kindOption.name}
+                    </option>
+                  ))}
+                </select>
+                <span
+                  className="delete-button"
+                  onClick={() => handleRemoveKind(index)}
+                  role="button"
+                >
+                  ×
+                </span>
+              </div>
+            ))}
+            </div>
+
+            <button type="button" onClick={handleAddKind}>
+              Agregar Caracteristicas
+            </button>
+          </div>
         </div>
         <button type="submit">Enviar</button>
       </form>

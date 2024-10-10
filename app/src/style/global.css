@@ -1,90 +1,122 @@
-*{
-    padding: 0;
-    margin: 0;
-    border-radius: 0.5rem;
-    font-family: SF Pro Display,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
-    scrollbar-width: none;
+* {
+  padding: 0;
+  margin: 0;
+  border-radius: 0.5rem;
+  font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+    sans-serif;
+  scrollbar-width: none;
 }
 
-h2{
-    text-align: center;
-    font-size: 1rem;
+h2 {
+  text-align: center;
+  font-size: 1rem;
 }
 
-body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    height: 100vh;
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  height: 100vh;
 }
 
-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    max-width: 100%;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 100%;
 }
 
-.flex{
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    max-width: 90vw;
-    justify-content: space-between;
+.flex {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 90vw;
+  justify-content: space-between;
 }
 
-.classic{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 800px;
-    margin: 10px;
+.classic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 10px;
 }
 
-.form{
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
+.form {
+  border: 1px solid #dfdfdf;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
-.form [type='text'],
-.form [type='password']
-{
-    width: 90%;
+.form [type="text"],
+.form [type="password"] {
+  width: 100%;
+  border: 1px solid black;
 }
 
-.input{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    position: relative;
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  position: relative;
 }
 
-ul,ol{
-    list-style: none;
+ul,
+ol {
+  list-style: none;
 }
 
-button{
-    display: unset;
-    position: unset;
-    box-shadow: unset;
-    cursor: unset;
-    flex-direction: unset;
-    align-items: unset;
-    border: unset;
-    margin: 5px;
-    padding: 5px;
+button {
+  background-color: rgb(0, 140, 255);
+  color: white;
+  cursor: pointer;
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
+}
+button:active {
+  background-color: rgb(0, 81, 147);
+}
+button:disabled {
+  background-color: rgb(0, 35, 63);
 }
 
 .center {
-    justify-content: center;
-    align-items: center;
-  }
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  width: 100%;
+  margin-top: 5px;
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.title {
+  color: black;
+  position: relative;
+  padding: 10px;
+}
+.title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #bebebe92;
+  backdrop-filter: saturate(180%) blur(20px);
+  border-radius: 1rem;
+  transform: skew(-20deg);
+  z-index: -1;
+}

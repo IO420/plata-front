@@ -17,7 +17,8 @@ const useField = (type: string) => {
 
 export default function CreateUser() {
   const name = useField("text");
-  const description = useField("text");
+  const password = useField("password");
+  const type = useField("text");
   const [imageBase64, setImageBase64] = useState<string | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
@@ -69,14 +70,15 @@ export default function CreateUser() {
 
           <div className="input">
             <label>Contraseña</label>
-            <input id="name" {...name} />
+            <input id="password" {...password} />
           </div>
 
           <div className="input">
             <label>Tipo de Usuario</label>
-            <input id="name" {...name} />
+            <select value={type.value}>
+              <option value={0}>Selecciona</option>
+            </select>
           </div>
-
         </div>
       </form>
     </div>

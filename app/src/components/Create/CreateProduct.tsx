@@ -191,7 +191,7 @@ export default function CreateProduct() {
             <div className="kind-container">
             {selectedKinds.map((kind, index) => (
               <div className="kind-wrapper" key={index}>
-                <label htmlFor={`kind-${index}`}>Tipo {index + 1}</label>
+                <label htmlFor={`kind-${index}`}>Caracteristica {index + 1}</label>
                 <select
                   id={`kind-${index}`}
                   value={kind.value}
@@ -199,7 +199,7 @@ export default function CreateProduct() {
                     handleKindChange(index, Number(e.target.value))
                   }
                 >
-                  <option value={0}>Selecciona un tipo</option>
+                  <option value={0}>Selecciona</option>
                   {kinds.map((kindOption) => (
                     <option key={kindOption.id_kind} value={kindOption.id_kind}>
                       {kindOption.name}

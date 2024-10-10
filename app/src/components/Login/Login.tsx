@@ -39,7 +39,6 @@ export default function Login() {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Nombre de Usuario"
             required
           />
         </div>
@@ -51,7 +50,6 @@ export default function Login() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Contraseña"
             required
           />
         </div>

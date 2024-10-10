@@ -1,4 +1,7 @@
 footer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
     background-color: #bebebe92;
     border-radius: 0;
 }

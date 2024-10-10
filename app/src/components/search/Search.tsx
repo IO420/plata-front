@@ -21,7 +21,7 @@ export default function Search() {
 
   return (
     <>
-      <h2>Categorias</h2>
+      <h1 className="title">Categorias</h1>
       <div className="searchContainer">
         {kinds.map((kind: any) => (
           <Kind 

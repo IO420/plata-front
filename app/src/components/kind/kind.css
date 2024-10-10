@@ -1,30 +1,54 @@
-.kind{
-    display: flex;
-    flex-direction: column;
-    max-width: 10vw;
-    min-width: 100px;
-    max-height: auto;
-    min-height: 100px;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    margin: 10px;
-    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.5);
+.kind {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 10vw;
+  max-height: 100px;
+  min-width: 100px;
+  min-height: 100px;
+  padding: 5px;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  margin: 10px;
 }
 
-.kind:hover{
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 8px 16px 4px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
+.kind::after {
+  position: absolute;
+  top: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: inherit;
+  z-index: -1;
 }
 
-.kindHeader{
-    position: absolute;
-    backdrop-filter: saturate(1%) blur(2px);
+.kind:hover::after {
+  z-index: 0;
 }
 
-.kindimg{
-    max-width: 10vw;
-    min-width: 100px;
-    max-height: auto;
+.kind:active {
+  background-color: rgb(255, 255, 255);
+}
+
+.kind:active::after {
+  background-color: rgba(168, 168, 168, 0.245);
+}
+
+.kind:hover {
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 3px 16px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.kindHeader {
+  color: black;
+  position: absolute;
+  backdrop-filter: saturate(1%) blur(2px);
+}
+
+.kindimg {
+  width: 100%;
+  height: auto;
 }

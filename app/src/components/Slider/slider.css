@@ -16,7 +16,7 @@
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   gap: 1em;
-  margin-bottom: 40px
+  margin: 20px 0;
 }
 
 .slider img {

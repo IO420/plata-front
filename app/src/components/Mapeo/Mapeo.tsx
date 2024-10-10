@@ -56,7 +56,7 @@ export default function Mapeo({filters}: any) {
 
   return (
     <>
-      <h2 className="title">Recién agregado</h2>
+      <h1 className="title">Recién agregado</h1>
       <div className="sliderProduct" ref={sliderRef}>
         {products.map((product, index) => (
           <Card product={product} key={index} />

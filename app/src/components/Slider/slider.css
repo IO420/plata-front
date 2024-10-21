@@ -11,6 +11,7 @@
 .sliderProduct {
   display: flex;
   width: 100vw;
+  height: 280px;
   position: relative;
   overflow: scroll;
   overflow-y: hidden;

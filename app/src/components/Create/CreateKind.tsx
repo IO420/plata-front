@@ -17,7 +17,6 @@ const useField = (type: string) => {
 
 export default function CreateKind() {
     const name = useField("text");
-    const description = useField("text");
   const [imageBase64, setImageBase64] = useState<string | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 

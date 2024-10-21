@@ -7,3 +7,10 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
 }
+
+.center{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    align-items: center;
+}

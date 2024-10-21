@@ -5,15 +5,20 @@ import "../../style/card.css";
 import { Product } from "../../services/type";
 import Card from "../Card/Card";
 
-export default function Mapeo({filters}: any) {
-  const url = `/product?${filters}`;
+interface mapeoProps{
+  filters:any;
+  title:string;
+}
+
+export default function Mapeo(mapeoProps:mapeoProps) {
+  const url = `/product?${mapeoProps.filters}`;
   const { data, error } = useFetch(url);
   const [products, setProducts] = useState<Product[]>([]);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (data) {
-      setProducts([...data, ...data, ...data]);
+      setProducts([...data]);
     }
   }, [data]);
 
@@ -42,21 +47,18 @@ export default function Mapeo({filters}: any) {
     };
   }, [products]);
 
-  if (error) {
-    return (
-      <div>
-        {"Error al cargar los productos"}
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div>
+  //       {"Error al cargar los productos"}
+  //     </div>
+  //   );
+  // }
 
-  if (products.length === 0) {
-    return <div>No hay productos</div>;
-  }
 
   return (
     <>
-      <h1 className="title">Recién agregado</h1>
+      <h1 className="title">{mapeoProps.title}</h1>
       <div className="sliderProduct" ref={sliderRef}>
         {products.map((product, index) => (
           <Card product={product} key={index} />
